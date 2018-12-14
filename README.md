@@ -11,6 +11,7 @@ The source code is split into reusable components and builds with [Haskell Stack
 - `jhc-core`: Core language, based on [Pure Type System](https://en.wikipedia.org/wiki/Pure_type_system)
 - `jhc-grin`: Backend, C code generator, whole program optimizer, variant of GRIN intermediate language
 - `jhc-app`: JHC Compiler, command line interface
+- `lib`: Haskell standard libraries for JHC
 
 ### System Requirements
 - OS: Windows/Linux/OSX
