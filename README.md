@@ -21,7 +21,7 @@ To compile you will need [Haskell Stack](https://docs.haskellstack.org/en/stable
 ```
 stack setup
 stack build
-stack exec -- jhc -h
+stack exec -- jhc --help
 ```
 
 To compile the standard libraries run:
