@@ -64,10 +64,10 @@ reachableFrom fn fd ns  = fst $ newGraphReachable ns fn fd
 newGraph' :: Ord k => [n] -> (n -> k) -> (n -> [k]) -> (Map.Map k Vertex,Graph n)
 newGraph' ns fn fd = (kmap,Graph graph nr) where
     nr = listArray bounds0 ns
-    max_v      	    = length ns - 1
+    max_v           = length ns - 1
     bounds0         = (0,max_v) :: (Vertex, Vertex)
     kmap = Map.fromList [ (fn n,i) | (i,n) <- zip [0 ..] ns ]
-    graph	    = listArray bounds0 [mapMaybe (flip Map.lookup kmap) (snub $ fd n) | n <- ns]
+    graph           = listArray bounds0 [mapMaybe (flip Map.lookup kmap) (snub $ fd n) | n <- ns]
 
 fromScc (Left n) = [n]
 fromScc (Right n) = n
@@ -200,7 +200,7 @@ instance Functor Graph where
 restitchGraph :: Ord k => (n -> k) -> (n -> [k]) -> Graph n -> Graph n
 restitchGraph fn fd (Graph g nr) = Graph g' nr where
     kmap = Map.fromList [ (fn n,i) | (i,n) <- assocs nr ]
-    g'	 = listArray (bounds g) [mapMaybe (flip Map.lookup kmap) (snub $ fd n) | n <- elems nr]
+    g'   = listArray (bounds g) [mapMaybe (flip Map.lookup kmap) (snub $ fd n) | n <- elems nr]
 
 mapGraph :: forall a b . (a -> [b] -> b) -> Graph a -> Graph b
 mapGraph f (Graph gr nr) = runST $ do

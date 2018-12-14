@@ -230,8 +230,8 @@ fixupHsDecls ds = f ds where
 
 checkDataHeader :: HsQualType -> P (HsContext,Name,[Name])
 checkDataHeader (HsQualType cs t) = do
-	(c,ts) <- checkSimple "data/newtype" t []
-	return (cs,c,ts)
+        (c,ts) <- checkSimple "data/newtype" t []
+        return (cs,c,ts)
 
 checkSimple :: String -> HsType -> [Name] -> P ((Name,[Name]))
 checkSimple kw t xs = f t xs where

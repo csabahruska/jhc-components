@@ -150,7 +150,7 @@ data E = EAp E E
        eCaseDefault :: (Maybe E),
        eCaseAllFV  :: IdSet
        }
-	deriving(Eq, Ord)
+        deriving(Eq, Ord)
     {-! derive: is, from !-}
 
 --instance Functor (Lit e) where

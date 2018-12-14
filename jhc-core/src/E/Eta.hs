@@ -71,10 +71,10 @@ arityType e = f e where
     f (EVar tvr) | Just at <- Info.lookup (tvrInfo tvr) = at
     f _ = ATop
 
-andArityType ABottom	    at2		  = at2
-andArityType ATop	    at2		  = ATop
+andArityType ABottom        at2           = at2
+andArityType ATop           at2           = ATop
 andArityType (AFun t1 at1)  (AFun t2 at2) = AFun (t1 && t2) (andArityType at1 at2)
-andArityType at1	    at2		  = andArityType at2 at1
+andArityType at1            at2           = andArityType at2 at1
 
 annotateArity e nfo = annotateArity' (arityType e) nfo
 

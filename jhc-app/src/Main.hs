@@ -72,7 +72,7 @@ processFiles cs = f cs (optMainFunc options) where
         g [Left m]
     f cs _ = g (map fileOrModule cs)
     g fs = processCollectedHo . snd =<< parseFiles options [outputName] []
-	    fs processInitialHo processDecls
+            fs processInitialHo processDecls
     fileOrModule f = case reverse f of
         ('s':'h':'.':_)     -> Right f
         ('s':'h':'l':'.':_) -> Right f
@@ -103,9 +103,9 @@ processCollectedHo cho = do
     -- dump final version of various requested things
     wdump FD.Datatable $ putErrLn (render $ showDataTable dataTable)
     wdump FD.DatatableBuiltin $
-	putErrLn (render $ showDataTable samplePrimitiveDataTable)
+        putErrLn (render $ showDataTable samplePrimitiveDataTable)
     dumpRules (Rules $ fromList
-	[(combIdent x,combRules x) | x <- combinators, not $ null (combRules x)])
+        [(combIdent x,combRules x) | x <- combinators, not $ null (combRules x)])
 
     -- enter interactive mode
     int <- Interactive.isInteractive

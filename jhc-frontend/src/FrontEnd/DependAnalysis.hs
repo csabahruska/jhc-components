@@ -35,12 +35,12 @@ getBindGroups ns fn fd = map f $ stronglyConnComp [ (n, fn n, fd n) | n <- ns] w
     f (CyclicSCC xs) = xs
 {-
 getBindGroups ns getName getDeps
-	= [ mapOnList nameToNodeFM group | group <- nameGroups ]
-	where
-	nameGroups = buildNameGroups nameList nameEdges
-	nameList = map getName ns
-	nameEdges = buildNameEdges ns getName getDeps
-	nameToNodeFM = listToFM [ (getName x, x) | x <- ns ]
+        = [ mapOnList nameToNodeFM group | group <- nameGroups ]
+        where
+        nameGroups = buildNameGroups nameList nameEdges
+        nameList = map getName ns
+        nameEdges = buildNameEdges ns getName getDeps
+        nameToNodeFM = listToFM [ (getName x, x) | x <- ns ]
 
 getBindGroups ns toName getDeps = filter (not . null) (map (concatMap f) $ Scc.scc ds) where
     f n = case M.lookup n m of
@@ -61,11 +61,11 @@ buildNameEdges :: [node]           ->    -- List of nodes
                   (node -> [name]) ->    -- Function to return dependencies of this node
                   [(name,name)]          -- Edges from list of nodes.
 buildNameEdges [] _ _
-	= []
+        = []
 buildNameEdges (n:ns) getName getDeps
-	= map mapFunc (getDeps n) ++ (buildNameEdges ns getName getDeps)
-	where
-	mapFunc = ( \ s -> (getName n, s) )
+        = map mapFunc (getDeps n) ++ (buildNameEdges ns getName getDeps)
+        where
+        mapFunc = ( \ s -> (getName n, s) )
 -}
 
 --
@@ -77,13 +77,13 @@ buildNameGroups :: Ord name      =>
                    [(name,name)] ->    -- List of edges
                    [[name]]            -- List of bindgroups
 buildNameGroups ns es
-	= [ mapOnList intToNameFM group | group <- intGroups ]
-	where
-	intGroups = map preorder $ scc $ buildG (1, sizeFM nameToIntFM) intEdges
-	intEdges = mapOnTuple nameToIntFM es
-	nameToIntFM = listToFM nameIntList
-	intToNameFM = listToFM [ (y,x) | (x,y) <- nameIntList ]
-	nameIntList = zip ns [1..]
+        = [ mapOnList intToNameFM group | group <- intGroups ]
+        where
+        intGroups = map preorder $ scc $ buildG (1, sizeFM nameToIntFM) intEdges
+        intEdges = mapOnTuple nameToIntFM es
+        nameToIntFM = listToFM nameIntList
+        intToNameFM = listToFM [ (y,x) | (x,y) <- nameIntList ]
+        nameIntList = zip ns [1..]
 
 --
 -- Use a finitemap to convert a list of type A into a list of type B
@@ -96,9 +96,9 @@ mapOnList :: Ord a         =>
              [b]                 -- List of b
 mapOnList _ [] = []
 mapOnList fm (a:as)
-	= case (lookupFM fm a) of
-			Just b  -> b : mapOnList fm as
-			Nothing -> mapOnList fm as
+        = case (lookupFM fm a) of
+                        Just b  -> b : mapOnList fm as
+                        Nothing -> mapOnList fm as
 
 --
 -- Use a finitemap to convert a 2 tuple to a different type.
@@ -111,12 +111,12 @@ mapOnTuple :: Ord a         =>
               [(b,b)]
 mapOnTuple _ [] = []
 mapOnTuple fm ((a1,a2):as)
-	= case (lookupFM fm a1) of
-		Just x  ->
-			case (lookupFM fm a2) of
-				Just y  -> (x,y) : (mapOnTuple fm as)
-				Nothing -> mapOnTuple fm as
-		Nothing -> mapOnTuple fm as
+        = case (lookupFM fm a1) of
+                Just x  ->
+                        case (lookupFM fm a2) of
+                                Just y  -> (x,y) : (mapOnTuple fm as)
+                                Nothing -> mapOnTuple fm as
+                Nothing -> mapOnTuple fm as
 
 -}
 
@@ -129,10 +129,10 @@ mapOnTuple fm ((a1,a2):as)
 --
 {-
 showBindGroups :: [[node]]        ->     -- List of nodes
-		  (node->String)  ->     -- Function to convert a node to a string
+                  (node->String)  ->     -- Function to convert a node to a string
                   String                 -- Printable string
 showBindGroups ns getAlias
-	= showBindGroups_ ns getAlias 0
+        = showBindGroups_ ns getAlias 0
 -}
 
 --
@@ -140,17 +140,17 @@ showBindGroups ns getAlias
 --
 {-
 showBindGroups_ :: [[node]]        ->     -- List of nodes
-		   (node->String)  ->     -- Function to convert a node to a string
+                   (node->String)  ->     -- Function to convert a node to a string
                    Int             ->     -- Bind group number
                    String                 -- Printable string
 showBindGroups_ [] _ _
-	= ""
+        = ""
 showBindGroups_ (n:ns) getAlias groupNum
-	= "Bindgroup " ++ show groupNum ++ " = "
-	  ++ bgString ++ "\n"
-	  ++ showBindGroups_ ns getAlias (groupNum + 1)
-	where
-	bgString = wrapString "EMPTY" (listToString n getAlias)
+        = "Bindgroup " ++ show groupNum ++ " = "
+          ++ bgString ++ "\n"
+          ++ showBindGroups_ ns getAlias (groupNum + 1)
+        where
+        bgString = wrapString "EMPTY" (listToString n getAlias)
 -}
 
 --------------------------------------------------------------------------------
@@ -165,12 +165,12 @@ showBindGroups_ (n:ns) getAlias groupNum
 --
 debugBindGroups :: (Eq name) =>
                   [[node]]        ->     -- List of nodes
-		  (node->String)  ->     -- Function to produce a printable name for the node
+                  (node->String)  ->     -- Function to produce a printable name for the node
                   (node->name)    ->     -- Function to convert nodes to a unique name
-		  (node->[name])  ->     -- Function to return dependencies of this node
+                  (node->[name])  ->     -- Function to return dependencies of this node
                   String                 -- Printable string
 debugBindGroups ns getAlias getName getDeps
-	= debugBindGroups_ ns getAlias getName getDeps 0 []
+        = debugBindGroups_ ns getAlias getName getDeps 0 []
 
 --
 -- Recursive function which does the work of showBindGroups.
@@ -179,19 +179,19 @@ debugBindGroups_ :: (Eq name) =>
                    [[node]]        ->     -- List of nodes
                    (node->String)  ->     -- Function to produce a printable name for the node
                    (node->name)    ->     -- Function to convert nodes to a unique name
-		   (node->[name])  ->     -- Function to return dependencies of this node
+                   (node->[name])  ->     -- Function to return dependencies of this node
                    Int             ->     -- Bind group number
-		   [(Int,[name])]  ->     -- History information of names already processed
+                   [(Int,[name])]  ->     -- History information of names already processed
                    String                 -- Printable string
 debugBindGroups_ [] _ _ _ _ _
-	= ""
+        = ""
 debugBindGroups_ (n:ns) getAlias getName getDeps groupNum history
-	= show groupNum ++ " = "
-	  ++ bgString ++ "\n"
-	  ++ debugBindGroups_ ns getAlias getName getDeps (groupNum + 1) newHistory
-	where
-	bgString = showBindGroup (expandBindGroup n getAlias getDeps newHistory)
-	newHistory = history ++ [(groupNum, [ getName x | x <- n ])]
+        = show groupNum ++ " = "
+          ++ bgString ++ "\n"
+          ++ debugBindGroups_ ns getAlias getName getDeps (groupNum + 1) newHistory
+        where
+        bgString = showBindGroup (expandBindGroup n getAlias getDeps newHistory)
+        newHistory = history ++ [(groupNum, [ getName x | x <- n ])]
 
 --
 -- Expand bindgroups, generating dependancie and error information.
@@ -199,19 +199,19 @@ debugBindGroups_ (n:ns) getAlias getName getDeps groupNum history
 expandBindGroup :: (Eq name) =>
                    [node]         ->               -- List of nodes
                    (node->String) ->               -- Function to produce a printable name for the node
-		   (node->[name]) ->               -- Function to return dependencies of this node
+                   (node->[name]) ->               -- Function to return dependencies of this node
                    [(Int,[name])] ->               -- History information of names already processed
                    ([String], [Int], [String])     -- Printable string in form (bindgroup, bgnums, Errors)
 expandBindGroup [] _ _ _
-	= ([],[],[])
+        = ([],[],[])
 expandBindGroup (n:ns) getAlias getDeps history
-	= if err
-		then (name:a, bgs++b, name:c)
-		else (name:a, bgs++b, c)
-	where
-	name = getAlias n
-	(bgs, err) = inHistory (getDeps n) history
-	(a,b,c) = expandBindGroup ns getAlias getDeps history
+        = if err
+                then (name:a, bgs++b, name:c)
+                else (name:a, bgs++b, c)
+        where
+        name = getAlias n
+        (bgs, err) = inHistory (getDeps n) history
+        (a,b,c) = expandBindGroup ns getAlias getDeps history
 -- NB ticti, you should not be calling inHistory on the name, but instead on the deps.
 
 --
@@ -220,11 +220,11 @@ expandBindGroup (n:ns) getAlias getDeps history
 --
 showBindGroup :: ([String],[Int],[String]) -> String
 showBindGroup (bg, deps, errors)
-	= bgString ++ " " ++ depString ++ " " ++ errString
-	where
-	bgString  = wrapString [] $ listToString bg id
-	depString = wrapString [] $ listToString (nub deps) show
-	errString = wrapString [] $ listToString errors id
+        = bgString ++ " " ++ depString ++ " " ++ errString
+        where
+        bgString  = wrapString [] $ listToString bg id
+        depString = wrapString [] $ listToString (nub deps) show
+        errString = wrapString [] $ listToString errors id
 
 --
 -- Convert a list of something, into a printable string.
@@ -233,11 +233,11 @@ listToString :: [a]         ->    -- List of things
                 (a->String) ->    -- Function to convert things to Strings
                 String            -- Single printable String.
 listToString [] _
-	= ""
+        = ""
 listToString [l] lFunc
-	= (lFunc l)
+        = (lFunc l)
 listToString (l:ls) lFunc
-	= (lFunc l) ++ ", " ++ listToString ls lFunc
+        = (lFunc l) ++ ", " ++ listToString ls lFunc
 
 --
 -- Given a list of names and the history of visited names, this function
@@ -251,14 +251,14 @@ inHistory :: Eq name =>
              [(Int,[name])] ->    -- History information of names already processed
              ([Int],Bool)         -- Number of bind group that name is in, or its own alias.
 inHistory [] _
-	= ([],False)
+        = ([],False)
 inHistory (name:names) history
-	= if location < 0
-		then (bgs, False)
-		else (location : bgs, err)
-	where
-	location = searchHistory name history
-	(bgs, err) = inHistory names history
+        = if location < 0
+                then (bgs, False)
+                else (location : bgs, err)
+        where
+        location = searchHistory name history
+        (bgs, err) = inHistory names history
 
 --
 -- Check whether a particular name has occured befor and return the number
@@ -269,11 +269,11 @@ searchHistory :: Eq name        =>
                  [(Int,[name])] ->   -- History information of names already processed
                  Int                 -- Bindgroup num that name occurred in (-1 is error)
 searchHistory _ []
-	= -1
+        = -1
 searchHistory name ((bgnum, bgnames):history)
-	= if elem name bgnames
-		then bgnum
-		else searchHistory name history
+        = if elem name bgnames
+                then bgnum
+                else searchHistory name history
 
 --
 -- Neatly brackets a string using a replacement string (rep) if empty.

@@ -92,18 +92,18 @@ showLit showBind l = do
 --                    se <- showBind v
 --                    return $ atom (text n) `app` se
         f LitCons { litName = s, litArgs = es, litType = t,
-		    litAliasFor = Just af } | dump FD.EAlias = do
-	    s <- return $ fromMaybe s (shortenName s)
+                    litAliasFor = Just af } | dump FD.EAlias = do
+            s <- return $ fromMaybe s (shortenName s)
             es' <- mapM showBind es
             se <- showE af
             return $ foldl appCon (atom (tshow s <> char '@' <> parens (unparse se))) es' -- `inhabit` prettye t
         f LitCons { litName = s, litArgs = es, litType = t } = do
-	    s <- return $ fromMaybe s (shortenName s)
+            s <- return $ fromMaybe s (shortenName s)
             es' <- mapM showBind es
             return $ foldl appCon (atom (tshow s)) es' -- `inhabit` prettye t
         cons = bop (R,5) (text ":")
-	shortenName n = Map.lookup n shortName `mplus` (getModule n >>= mm) where
-	    mm m = if m `elem` shortMods then return (toUnqualified n) else Nothing
+        shortenName n = Map.lookup n shortName `mplus` (getModule n >>= mm) where
+            mm m = if m `elem` shortMods then return (toUnqualified n) else Nothing
             shortMods = [ mod_JhcPrimIO, mod_JhcPrimBits, mod_JhcTypeWord, mod_JhcTypeC ]
     f l
 

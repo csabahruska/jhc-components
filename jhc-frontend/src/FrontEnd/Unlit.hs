@@ -15,7 +15,7 @@ classify (('\\':x):xs) | x == "begin{code}" = Blank : allProg xs
    where allProg [] = []  -- Should give an error message,
                           -- but I have no good position information.
          allProg (('\\':x):xs) |  x == "end{code}" = Blank : classify xs
-	 allProg (x:xs) = Program x:allProg xs
+         allProg (x:xs) = Program x:allProg xs
 classify (('>':x):xs)      = Program (' ':x) : classify xs
 classify (('#':'l':'i':'n':'e':' ':x):xs)      = (case words x of
                                 (line:file:_) | all isDigit line
@@ -70,7 +70,7 @@ message file   n p c = "In file " ++ file ++ " at line "++show n++": "++p++ " li
 inlines s = lines' s id
   where
   lines' []             acc = [acc []]
-  lines' ('\^M':'\n':s) acc = acc [] : lines' s id	-- DOS
-  lines' ('\^M':s)      acc = acc [] : lines' s id	-- MacOS
-  lines' ('\n':s)       acc = acc [] : lines' s id	-- Unix
+  lines' ('\^M':'\n':s) acc = acc [] : lines' s id      -- DOS
+  lines' ('\^M':s)      acc = acc [] : lines' s id      -- MacOS
+  lines' ('\n':s)       acc = acc [] : lines' s id      -- Unix
   lines' (c:s)          acc = lines' s (acc . (c:))

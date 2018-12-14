@@ -28,7 +28,7 @@ module Util.IntBag  (
             , size
 --            , member
 --            , notMember
---	    , lookup
+--          , lookup
 --            , findWithDefault
 
             -- * Construction
@@ -82,7 +82,7 @@ module Util.IntBag  (
             -- * Conversion
 --            , elems
 --            , keys
---	    , keysSet
+--          , keysSet
             , assocs
 
             -- ** Lists

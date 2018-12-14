@@ -165,9 +165,9 @@ srcLocLine_s v =  srcLocLine_u  (const v)
 
 instance Data.Binary.Binary SrcLoc where
     put (SrcLoc aa ab ac) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
     get = do
     aa <- get
     ab <- get
@@ -181,8 +181,8 @@ srcSpanEnd_s v =  srcSpanEnd_u  (const v)
 
 instance Data.Binary.Binary SrcSpan where
     put (SrcSpan aa ab) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
+            Data.Binary.put aa
+            Data.Binary.put ab
     get = do
     aa <- get
     ab <- get
@@ -190,8 +190,8 @@ instance Data.Binary.Binary SrcSpan where
 
 instance (Data.Binary.Binary x) => Data.Binary.Binary (Located x) where
     put (Located aa ab) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
+            Data.Binary.put aa
+            Data.Binary.put ab
     get = do
     aa <- get
     ab <- get

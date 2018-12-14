@@ -72,13 +72,13 @@ data HsDecl
         hsDeclTArgs   :: [HsType],
         hsDeclHasKind :: Maybe HsKind
         }
-    | HsTypeDecl	 {
+    | HsTypeDecl         {
         hsDeclSrcLoc :: SrcLoc,
         hsDeclName   :: !Name,
         hsDeclTArgs  :: [HsType],
         hsDeclType   :: HsType
         }
-    | HsDataDecl	 {
+    | HsDataDecl         {
         hsDeclDeclType :: !DeclType,
         hsDeclSrcLoc   :: SrcLoc,
         hsDeclContext  :: HsContext,
@@ -117,12 +117,12 @@ data HsDecl
         hsDeclSrcLoc :: SrcLoc,
         hsDeclType   :: HsType
         }
-    | HsTypeSig	{
+    | HsTypeSig {
         hsDeclSrcLoc   :: SrcLoc,
         hsDeclNames    :: [Name],
         hsDeclQualType :: HsQualType }
     | HsFunBind  [HsMatch]
-    | HsPatBind	 {
+    | HsPatBind  {
         hsDeclSrcLoc :: SrcLoc,
         hsDeclPat    :: HsPat,
         hsDeclRhs    :: HsRhs,
@@ -211,8 +211,8 @@ hsConDeclArgs HsConDecl { hsConDeclConArg = as } = as
 hsConDeclArgs HsRecDecl { hsConDeclRecArg = as } = concat [ replicate (length ns) t | (ns,t) <- as]
 
 data HsBangType' a
-	 = HsBangedTy   { hsBangType :: a }
-	 | HsUnBangedTy { hsBangType :: a }
+         = HsBangedTy   { hsBangType :: a }
+         | HsUnBangedTy { hsBangType :: a }
   deriving(Eq,Show,Functor,Ord,Traversable,Foldable)
 
 data HsRhs = HsUnGuardedRhs HsExp | HsGuardedRhss [HsComp]
@@ -268,18 +268,18 @@ data HsAsst = HsAsst Name [Name] | HsAsstEq HsType HsType
     {-! derive: Binary !-}
 
 data HsLiteral
-	= HsInt		!Integer
-	| HsChar	!Char
-	| HsString	String
-	| HsFrac	Rational
-	-- unboxed literals:
-	| HsCharPrim	Char
-	| HsStringPrim	String
-	| HsIntPrim	Integer
-	| HsFloatPrim	Rational
-	| HsDoublePrim	Rational
-	-- GHC extension:
-	| HsLitLit	String
+        = HsInt         !Integer
+        | HsChar        !Char
+        | HsString      String
+        | HsFrac        Rational
+        -- unboxed literals:
+        | HsCharPrim    Char
+        | HsStringPrim  String
+        | HsIntPrim     Integer
+        | HsFloatPrim   Rational
+        | HsDoublePrim  Rational
+        -- GHC extension:
+        | HsLitLit      String
   deriving(Eq,Show,Ord)
     {-! derive: is !-}
 
@@ -491,29 +491,29 @@ hsModuleSrcLoc_s v =  hsModuleSrcLoc_u  (const v)
 
 instance Data.Binary.Binary HsAssoc where
     put HsAssocNone = do
-	    Data.Binary.putWord8 0
+            Data.Binary.putWord8 0
     put HsAssocLeft = do
-	    Data.Binary.putWord8 1
+            Data.Binary.putWord8 1
     put HsAssocRight = do
-	    Data.Binary.putWord8 2
+            Data.Binary.putWord8 2
     put HsAssocPrefix = do
-	    Data.Binary.putWord8 3
+            Data.Binary.putWord8 3
     put HsAssocPrefixy = do
-	    Data.Binary.putWord8 4
+            Data.Binary.putWord8 4
     get = do
-	    h <- Data.Binary.getWord8
-	    case h of
-	      0 -> do
-		    return HsAssocNone
-	      1 -> do
-		    return HsAssocLeft
-	      2 -> do
-		    return HsAssocRight
-	      3 -> do
-		    return HsAssocPrefix
-	      4 -> do
-		    return HsAssocPrefixy
-	      _ -> fail "invalid binary data found"
+            h <- Data.Binary.getWord8
+            case h of
+              0 -> do
+                    return HsAssocNone
+              1 -> do
+                    return HsAssocLeft
+              2 -> do
+                    return HsAssocRight
+              3 -> do
+                    return HsAssocPrefix
+              4 -> do
+                    return HsAssocPrefixy
+              _ -> fail "invalid binary data found"
 
 isHsTypeFamilyDecl (HsTypeFamilyDecl _ _ _ _ _) = True
 isHsTypeFamilyDecl _ = False
@@ -577,8 +577,8 @@ hsConDeclSrcLoc_s v =  hsConDeclSrcLoc_u  (const v)
 
 instance Data.Binary.Binary HsQualType where
     put (HsQualType aa ab) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
+            Data.Binary.put aa
+            Data.Binary.put ab
     get = do
     aa <- get
     ab <- get
@@ -586,93 +586,93 @@ instance Data.Binary.Binary HsQualType where
 
 instance Data.Binary.Binary HsType where
     put (HsTyFun aa ab) = do
-	    Data.Binary.putWord8 0
-	    Data.Binary.put aa
-	    Data.Binary.put ab
+            Data.Binary.putWord8 0
+            Data.Binary.put aa
+            Data.Binary.put ab
     put (HsTyTuple ac) = do
-	    Data.Binary.putWord8 1
-	    Data.Binary.put ac
+            Data.Binary.putWord8 1
+            Data.Binary.put ac
     put (HsTyUnboxedTuple ad) = do
-	    Data.Binary.putWord8 2
-	    Data.Binary.put ad
+            Data.Binary.putWord8 2
+            Data.Binary.put ad
     put (HsTyApp ae af) = do
-	    Data.Binary.putWord8 3
-	    Data.Binary.put ae
-	    Data.Binary.put af
+            Data.Binary.putWord8 3
+            Data.Binary.put ae
+            Data.Binary.put af
     put (HsTyVar ag) = do
-	    Data.Binary.putWord8 4
-	    Data.Binary.put ag
+            Data.Binary.putWord8 4
+            Data.Binary.put ag
     put (HsTyCon ah) = do
-	    Data.Binary.putWord8 5
-	    Data.Binary.put ah
+            Data.Binary.putWord8 5
+            Data.Binary.put ah
     put (HsTyForall ai aj) = do
-	    Data.Binary.putWord8 6
-	    Data.Binary.put ai
-	    Data.Binary.put aj
+            Data.Binary.putWord8 6
+            Data.Binary.put ai
+            Data.Binary.put aj
     put (HsTyExists ak al) = do
-	    Data.Binary.putWord8 7
-	    Data.Binary.put ak
-	    Data.Binary.put al
+            Data.Binary.putWord8 7
+            Data.Binary.put ak
+            Data.Binary.put al
     put (HsTyExpKind am an) = do
-	    Data.Binary.putWord8 8
-	    Data.Binary.put am
-	    Data.Binary.put an
+            Data.Binary.putWord8 8
+            Data.Binary.put am
+            Data.Binary.put an
     put (HsTyStrictType ao ap) = do
-	    Data.Binary.putWord8 9
-	    Data.Binary.put ao
-	    Data.Binary.put ap
+            Data.Binary.putWord8 9
+            Data.Binary.put ao
+            Data.Binary.put ap
     put HsTyAssoc = do
-	    Data.Binary.putWord8 10
+            Data.Binary.putWord8 10
     put (HsTyEq aq ar) = do
-	    Data.Binary.putWord8 11
-	    Data.Binary.put aq
-	    Data.Binary.put ar
+            Data.Binary.putWord8 11
+            Data.Binary.put aq
+            Data.Binary.put ar
     get = do
-	    h <- Data.Binary.getWord8
-	    case h of
-	      0 -> do
-		    aa <- Data.Binary.get
-		    ab <- Data.Binary.get
-		    return (HsTyFun aa ab)
-	      1 -> do
-		    ac <- Data.Binary.get
-		    return (HsTyTuple ac)
-	      2 -> do
-		    ad <- Data.Binary.get
-		    return (HsTyUnboxedTuple ad)
-	      3 -> do
-		    ae <- Data.Binary.get
-		    af <- Data.Binary.get
-		    return (HsTyApp ae af)
-	      4 -> do
-		    ag <- Data.Binary.get
-		    return (HsTyVar ag)
-	      5 -> do
-		    ah <- Data.Binary.get
-		    return (HsTyCon ah)
-	      6 -> do
-		    ai <- Data.Binary.get
-		    aj <- Data.Binary.get
-		    return (HsTyForall ai aj)
-	      7 -> do
-		    ak <- Data.Binary.get
-		    al <- Data.Binary.get
-		    return (HsTyExists ak al)
-	      8 -> do
-		    am <- Data.Binary.get
-		    an <- Data.Binary.get
-		    return (HsTyExpKind am an)
-	      9 -> do
-		    ao <- Data.Binary.get
-		    ap <- Data.Binary.get
-		    return (HsTyStrictType ao ap)
-	      10 -> do
-		    return HsTyAssoc
-	      11 -> do
-		    aq <- Data.Binary.get
-		    ar <- Data.Binary.get
-		    return (HsTyEq aq ar)
-	      _ -> fail "invalid binary data found"
+            h <- Data.Binary.getWord8
+            case h of
+              0 -> do
+                    aa <- Data.Binary.get
+                    ab <- Data.Binary.get
+                    return (HsTyFun aa ab)
+              1 -> do
+                    ac <- Data.Binary.get
+                    return (HsTyTuple ac)
+              2 -> do
+                    ad <- Data.Binary.get
+                    return (HsTyUnboxedTuple ad)
+              3 -> do
+                    ae <- Data.Binary.get
+                    af <- Data.Binary.get
+                    return (HsTyApp ae af)
+              4 -> do
+                    ag <- Data.Binary.get
+                    return (HsTyVar ag)
+              5 -> do
+                    ah <- Data.Binary.get
+                    return (HsTyCon ah)
+              6 -> do
+                    ai <- Data.Binary.get
+                    aj <- Data.Binary.get
+                    return (HsTyForall ai aj)
+              7 -> do
+                    ak <- Data.Binary.get
+                    al <- Data.Binary.get
+                    return (HsTyExists ak al)
+              8 -> do
+                    am <- Data.Binary.get
+                    an <- Data.Binary.get
+                    return (HsTyExpKind am an)
+              9 -> do
+                    ao <- Data.Binary.get
+                    ap <- Data.Binary.get
+                    return (HsTyStrictType ao ap)
+              10 -> do
+                    return HsTyAssoc
+              11 -> do
+                    aq <- Data.Binary.get
+                    ar <- Data.Binary.get
+                    return (HsTyEq aq ar)
+              _ -> fail "invalid binary data found"
 
 isHsTyFun (HsTyFun _ _) = True
 isHsTyFun _ = False
@@ -701,9 +701,9 @@ isHsTyEq _ = False
 
 instance Data.Binary.Binary HsTyVarBind where
     put (HsTyVarBind aa ab ac) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
     get = do
     aa <- get
     ab <- get
@@ -719,25 +719,25 @@ hsTyVarBindSrcLoc_s v =  hsTyVarBindSrcLoc_u  (const v)
 
 instance Data.Binary.Binary HsAsst where
     put (HsAsst aa ab) = do
-	    Data.Binary.putWord8 0
-	    Data.Binary.put aa
-	    Data.Binary.put ab
+            Data.Binary.putWord8 0
+            Data.Binary.put aa
+            Data.Binary.put ab
     put (HsAsstEq ac ad) = do
-	    Data.Binary.putWord8 1
-	    Data.Binary.put ac
-	    Data.Binary.put ad
+            Data.Binary.putWord8 1
+            Data.Binary.put ac
+            Data.Binary.put ad
     get = do
-	    h <- Data.Binary.getWord8
-	    case h of
-	      0 -> do
-		    aa <- Data.Binary.get
-		    ab <- Data.Binary.get
-		    return (HsAsst aa ab)
-	      1 -> do
-		    ac <- Data.Binary.get
-		    ad <- Data.Binary.get
-		    return (HsAsstEq ac ad)
-	      _ -> fail "invalid binary data found"
+            h <- Data.Binary.getWord8
+            case h of
+              0 -> do
+                    aa <- Data.Binary.get
+                    ab <- Data.Binary.get
+                    return (HsAsst aa ab)
+              1 -> do
+                    ac <- Data.Binary.get
+                    ad <- Data.Binary.get
+                    return (HsAsstEq ac ad)
+              _ -> fail "invalid binary data found"
 
 isHsInt (HsInt _) = True
 isHsInt _ = False
@@ -904,22 +904,22 @@ isHsPatWords _ = False
 
 instance Data.Binary.Binary HsKind where
     put (HsKind aa) = do
-	    Data.Binary.putWord8 0
-	    Data.Binary.put aa
+            Data.Binary.putWord8 0
+            Data.Binary.put aa
     put (HsKindFn ab ac) = do
-	    Data.Binary.putWord8 1
-	    Data.Binary.put ab
-	    Data.Binary.put ac
+            Data.Binary.putWord8 1
+            Data.Binary.put ab
+            Data.Binary.put ac
     get = do
-	    h <- Data.Binary.getWord8
-	    case h of
-	      0 -> do
-		    aa <- Data.Binary.get
-		    return (HsKind aa)
-	      1 -> do
-		    ab <- Data.Binary.get
-		    ac <- Data.Binary.get
-		    return (HsKindFn ab ac)
-	      _ -> fail "invalid binary data found"
+            h <- Data.Binary.getWord8
+            case h of
+              0 -> do
+                    aa <- Data.Binary.get
+                    return (HsKind aa)
+              1 -> do
+                    ab <- Data.Binary.get
+                    ac <- Data.Binary.get
+                    return (HsKindFn ab ac)
+              _ -> fail "invalid binary data found"
 
 --  Imported from other files :-

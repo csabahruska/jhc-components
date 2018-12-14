@@ -639,15 +639,15 @@ tcMiscDecl d = withContext (locMsg (srcLoc d) "in the declaration" "") $ f d whe
             addRule RuleSpec { ruleUniq = hsDeclUniq spec, ruleName = nn, ruleType = t, ruleSuper = hsDeclBool spec }
             return [spec]
     f HsInstDecl { .. } = do
-	tcClassHead hsDeclClassHead
+        tcClassHead hsDeclClassHead
         ch <- getClassHierarchy
         let as = asksClassRecord ch (hsClassHead hsDeclClassHead) classAssumps
-	forM_ hsDeclDecls $ \d -> do
-	    case maybeGetDeclName d of
-		Just n -> when (n `notElem` fsts as) $ do
-		    addWarn InvalidDecl $ printf "Cannot declare '%s' in instance because it is not a method of class '%s'" (show n) (show $ hsClassHead hsDeclClassHead)
-		Nothing -> return ()
-	return []
+        forM_ hsDeclDecls $ \d -> do
+            case maybeGetDeclName d of
+                Just n -> when (n `notElem` fsts as) $ do
+                    addWarn InvalidDecl $ printf "Cannot declare '%s' in instance because it is not a method of class '%s'" (show n) (show $ hsClassHead hsDeclClassHead)
+                Nothing -> return ()
+        return []
 
     f i@HsDeclDeriving {} = tcClassHead (hsDeclClassHead i)
     f (HsPragmaRules rs) = do

@@ -173,8 +173,8 @@ newtype IdNameT m a = IdNameT (StateT (IdSet, IdSet) m a)
     deriving(Monad, MonadTrans, Functor, MonadFix, MonadPlus, MonadIO)
 
 instance (MonadReader r m) => MonadReader r (IdNameT m) where
-	ask       = lift ask
-	local f (IdNameT m) = IdNameT $ local f m
+        ask       = lift ask
+        local f (IdNameT m) = IdNameT $ local f m
 
 -- | Run the name monad transformer.
 runIdNameT :: (Monad m) => IdNameT m a -> m (a,IdSet)

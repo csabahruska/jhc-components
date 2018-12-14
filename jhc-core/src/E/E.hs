@@ -153,19 +153,19 @@ isUnboxedTuple m = isJust (fromUnboxedTuple m)
 
 instance Show E where
     showsPrec d (EAp aa ab) = showParen (d >= 10)
-	      (showString "EAp" . showChar ' ' . showsPrec 10 aa . showChar ' ' .
-	       showsPrec 10 ab)
+              (showString "EAp" . showChar ' ' . showsPrec 10 aa . showChar ' ' .
+               showsPrec 10 ab)
     showsPrec d (ELam aa ab) = showParen (d >= 10)
-	      (showString "ELam" . showChar ' ' . showsPrec 10 aa
-	       . showChar ' ' . showsPrec 10 ab)
+              (showString "ELam" . showChar ' ' . showsPrec 10 aa
+               . showChar ' ' . showsPrec 10 ab)
     showsPrec d (EPi aa ab) | tvrIdent aa == emptyId = showParen (d >= 10)
-	      (showsPrec 10 (tvrType aa) . showString " -> " .
-	       showsPrec 10 ab)
+              (showsPrec 10 (tvrType aa) . showString " -> " .
+               showsPrec 10 ab)
     showsPrec d (EPi aa ab) = showParen (d >= 10)
-	      (showString "EPi" . showChar ' ' . showsPrec 10 aa . showChar ' ' .
-	       showsPrec 10 ab)
+              (showString "EPi" . showChar ' ' . showsPrec 10 aa . showChar ' ' .
+               showsPrec 10 ab)
     showsPrec d (EVar aa) = showParen (d >= 10)
-	      (showString "EVar" . showChar ' ' . showsPrec 10 aa)
+              (showString "EVar" . showChar ' ' . showsPrec 10 aa)
     showsPrec d (Unknown) = showString "Unknown"
     showsPrec d (ESort aa) = showsPrec d aa
     --showsPrec d (ESort aa) = showParen (d >= 10)
@@ -174,31 +174,31 @@ instance Show E where
     --showsPrec d (ELit aa) = showParen (d >= 10)
     --          (showString "ELit" . showChar ' ' . showsPrec 10 aa)
     showsPrec d (ELetRec aa ab) = showParen (d >= 10)
-	      (showString "ELetRec" . showChar '{' .
-	       showString "eDefs" . showChar '=' . showsPrec 10 aa
-	       . showChar ',' .
-	       showString "eBody" . showChar '=' . showsPrec 10 ab
-	       . showChar '}')
+              (showString "ELetRec" . showChar '{' .
+               showString "eDefs" . showChar '=' . showsPrec 10 aa
+               . showChar ',' .
+               showString "eBody" . showChar '=' . showsPrec 10 ab
+               . showChar '}')
     showsPrec d (EPrim aa ab ac) = showParen (d >= 10)
-	      (showString "EPrim" . showChar ' ' . showsPrec 10 aa
-	       . showChar ' ' . showsPrec 10 ab . showChar ' ' . showsPrec 10 ac)
+              (showString "EPrim" . showChar ' ' . showsPrec 10 aa
+               . showChar ' ' . showsPrec 10 ab . showChar ' ' . showsPrec 10 ac)
     showsPrec d (EError aa ab) = showParen (d >= 10)
-	      (showString "EError" . showChar ' ' . showsPrec 10 aa
-	       . showChar ' ' . showsPrec 10 ab)
+              (showString "EError" . showChar ' ' . showsPrec 10 aa
+               . showChar ' ' . showsPrec 10 ab)
     showsPrec d (ECase aa ab ac ad ae af) = showParen (d >= 10)
-	      (showString "ECase" . showChar '{' .
-	       showString "eCaseScrutinee" . showChar '=' . showsPrec 10 aa
-	       . showChar ',' .
-	       showString "eCaseType" . showChar '=' . showsPrec 10 ab
-	       . showChar ',' .
-	       showString "eCaseBind" . showChar '=' . showsPrec 10 ac
-	       . showChar ',' .
-	       showString "eCaseAlts" . showChar '=' . showsPrec 10 ad
-	       . showChar ',' .
-	       showString "eCaseDefault" . showChar '=' . showsPrec 10 ae
-	       . showChar ',' .
-	       showString "eCaseAllFV" . showChar '=' . showsPrec 10 af
-	       . showChar '}')
+              (showString "ECase" . showChar '{' .
+               showString "eCaseScrutinee" . showChar '=' . showsPrec 10 aa
+               . showChar ',' .
+               showString "eCaseType" . showChar '=' . showsPrec 10 ab
+               . showChar ',' .
+               showString "eCaseBind" . showChar '=' . showsPrec 10 ac
+               . showChar ',' .
+               showString "eCaseAlts" . showChar '=' . showsPrec 10 ad
+               . showChar ',' .
+               showString "eCaseDefault" . showChar '=' . showsPrec 10 ae
+               . showChar ',' .
+               showString "eCaseAllFV" . showChar '=' . showsPrec 10 af
+               . showChar '}')
 
 instance Show e => Show (Alt e) where
     showsPrec n (Alt l e) = showParen (n > 10) $ shows l . showString " -> " . shows e

@@ -131,23 +131,23 @@ determineExports' owns doneMods todoMods = mdo
         -> HsExportSpec   -- ^ the specification
         -> Rel Name Name  -- ^ the subset satisfying the specification
     entSpec isHiding rel e = f Nothing e where
-	f _ (HsEVar n) = restrictDomainS (toName Val n) rel
-	f Nothing (HsEAbs n) = restrictDomainSet (Set.fromList [ toName x n | x <- ts]) rel  where
-	    ts = TypeConstructor:ClassName:if isHiding then [DataConstructor] else []
-	f (Just nt) (HsEAbs n) = restrictDomainSet (Set.singleton (toName nt n)) rel  where
-	f mnt (HsEThingWith n xs) = restrictDomainSet (fromList (concat (map (`toName` n) ct:(map cd xs)))) rel where
-	    ct = case mnt of
-		Nothing -> [TypeConstructor,ClassName]
-		Just nt -> [nt]
-	    cd n =  [toName DataConstructor n, toName Val n, toName FieldLabel n ]
-	f mnt (HsEThingAll n) = rdl `mappend` restrictRange (`elem` ss) rel where
-	    ct = case mnt of
-		Nothing -> [TypeConstructor,ClassName]
-		Just nt -> [nt]
-	    ss = concat $ concat [ maybeToList (Map.lookup x ownsMap) | x <- Set.toList $ range rdl ]
-	    --cd n = [toName DataConstructor n, toName Val n, toName FieldLabel n ]
-	    rdl = (restrictDomain (`elem` map (`toName` n) ct) rel)
-	f _ (HsEQualified t n) = f (Just t) n
+        f _ (HsEVar n) = restrictDomainS (toName Val n) rel
+        f Nothing (HsEAbs n) = restrictDomainSet (Set.fromList [ toName x n | x <- ts]) rel  where
+            ts = TypeConstructor:ClassName:if isHiding then [DataConstructor] else []
+        f (Just nt) (HsEAbs n) = restrictDomainSet (Set.singleton (toName nt n)) rel  where
+        f mnt (HsEThingWith n xs) = restrictDomainSet (fromList (concat (map (`toName` n) ct:(map cd xs)))) rel where
+            ct = case mnt of
+                Nothing -> [TypeConstructor,ClassName]
+                Just nt -> [nt]
+            cd n =  [toName DataConstructor n, toName Val n, toName FieldLabel n ]
+        f mnt (HsEThingAll n) = rdl `mappend` restrictRange (`elem` ss) rel where
+            ct = case mnt of
+                Nothing -> [TypeConstructor,ClassName]
+                Just nt -> [nt]
+            ss = concat $ concat [ maybeToList (Map.lookup x ownsMap) | x <- Set.toList $ range rdl ]
+            --cd n = [toName DataConstructor n, toName Val n, toName FieldLabel n ]
+            rdl = (restrictDomain (`elem` map (`toName` n) ct) rel)
+        f _ (HsEQualified t n) = f (Just t) n
         f _ _ = error "Export.determineExports': bad."
 
 defsToRel xs = fromList $ map f xs where

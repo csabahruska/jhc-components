@@ -113,8 +113,8 @@ instance Binary ExtraFile where
 
 instance Binary FieldMap where
     put (FieldMap ac ad) = do
-	    putMap ac
-	    putMap ad
+            putMap ac
+            putMap ad
     get = do
     ac <- getMap
     ad <- getMap
@@ -122,11 +122,11 @@ instance Binary FieldMap where
 
 instance Data.Binary.Binary HoHeader where
     put (HoHeader aa ab ac ad ae) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
-	    Data.Binary.put ad
-	    Data.Binary.put ae
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
+            Data.Binary.put ad
+            Data.Binary.put ae
     get = do
     aa <- get
     ab <- get
@@ -137,10 +137,10 @@ instance Data.Binary.Binary HoHeader where
 
 instance Data.Binary.Binary HoIDeps where
     put (HoIDeps aa ab ac ad) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
-	    Data.Binary.put ad
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
+            Data.Binary.put ad
     get = do
     aa <- get
     ab <- get
@@ -150,10 +150,10 @@ instance Data.Binary.Binary HoIDeps where
 
 instance Data.Binary.Binary HoLib where
     put (HoLib aa ab ac ad) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
-	    Data.Binary.put ad
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
+            Data.Binary.put ad
     get = do
     aa <- get
     ab <- get
@@ -167,14 +167,14 @@ instance Binary Data.Version.Version where
 
 instance Data.Binary.Binary HoTcInfo where
     put (HoTcInfo aa ab ac ad ae af ag ah) = do
-	    Data.Binary.put aa
-	    putMap ab
-	    putMap ac
-	    Data.Binary.put ad
-	    Data.Binary.put ae
-	    Data.Binary.put af
-	    Data.Binary.put ag
-	    Data.Binary.put ah
+            Data.Binary.put aa
+            putMap ab
+            putMap ac
+            Data.Binary.put ad
+            Data.Binary.put ae
+            Data.Binary.put af
+            Data.Binary.put ag
+            Data.Binary.put ah
     get = do
     aa <- get
     ab <- getMap
@@ -188,9 +188,9 @@ instance Data.Binary.Binary HoTcInfo where
 
 instance Data.Binary.Binary HoBuild where
     put (HoBuild aa ab ac) = do
-	    Data.Binary.put aa
-	    Data.Binary.put ab
-	    Data.Binary.put ac
+            Data.Binary.put aa
+            Data.Binary.put ab
+            Data.Binary.put ac
     get = do
     aa <- get
     ab <- get

@@ -54,12 +54,12 @@ commentBlock x = text "{-" <> x <> text "-}"
 -- instance header, handling class constraints etc.
 simpleInstance :: Class -> Data -> Doc
 simpleInstance s d = hsep [text "instance"
-		, opt constr (\x -> parenList x <+> text "=>")
-		, text s
-		, opt1 (texts (getIdent (name d) : vars d)) parenSpace id]
+                , opt constr (\x -> parenList x <+> text "=>")
+                , text s
+                , opt1 (texts (getIdent (name d) : vars d)) parenSpace id]
    where
    constr = map (\(c,v) -> text c <+> text v) (constraints d) ++
-		      map (\x -> text s <+> text x) (vars d)
+                      map (\x -> text s <+> text x) (vars d)
    parenSpace = parens . hcat . sepWith space
 
 -- instanceSkeleton handles most instance declarations, where instance
@@ -73,10 +73,10 @@ type IFunction = Body -> Doc -- instance function
 
 instanceSkeleton :: Class -> [(IFunction,Doc)] -> Data -> Doc
 instanceSkeleton s ii  d = (simpleInstance s d <+> text "where")
-				$$ block functions
-	where
-	functions = concatMap f ii
-	f (i,dflt) = map i (body d) ++ [dflt]
+                                $$ block functions
+        where
+        functions = concatMap f ii
+        f (i,dflt) = map i (body d) ++ [dflt]
 
 -- little variable name generator, generates (length l) unique names aa - aZ
 varNames :: [a] -> [Doc]
@@ -100,7 +100,7 @@ pattern' c l = parens $ fsep (text c : varNames' l)
 -- test that a datatype has at least one record constructor
 hasRecord :: Data -> Bool
 hasRecord d =   statement d == DataStmt
-		&& any (not . null . labels) (body d)
+                && any (not . null . labels) (body d)
 
 tuple :: [Doc] -> Doc
 tuple xs = parens $ hcat (punctuate (char ',') xs)

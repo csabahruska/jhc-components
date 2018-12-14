@@ -223,7 +223,7 @@ type T = E
 boxResult :: DataTable -> T -> (Ty -> T -> E) -> Maybe E
 boxResult dataTable t fn = mdo
         (res,(ta,sta)) <- boxPrimitive dataTable (fn (stringToOpTy ta) sta) t
-	return res
+        return res
 
 stringToOpTy :: ExtType -> Ty
 stringToOpTy s = stringToOpTy' "" s
