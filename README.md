@@ -4,6 +4,13 @@ This is a fork of [JHC Haskell Compiler](http://repetae.net/computer/jhc/).
 
 The source code is split into reusable components and builds with [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).
 
+#### Components
+- `jhc-compat`: Haskell98 compatibility library
+- `jhc-common`: Compiler foundation library
+- `jhc-frontend`: Haskell Front-End, lexer, parser, type-checker
+- `jhc-core`: Core language, based on [Pure Type System](https://en.wikipedia.org/wiki/Pure_type_system)
+- `jhc-grin`: Backend, C code generator, whole program optimizer, variant of GRIN intermediate language
+
 ### System Requirements
 - OS: Windows/Linux/OSX
 
