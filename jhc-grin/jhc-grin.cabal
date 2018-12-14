@@ -1,0 +1,66 @@
+name:                jhc-grin
+version:             0.1.0.0
+synopsis:            jhc grin backend
+--description:
+license:             BSD3
+license-file:        LICENSE
+author:              John Meacham
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    Grin.DeadCode
+    Grin.Devolve
+    Grin.EvalInline
+    Grin.FromE
+    Grin.Grin
+    Grin.HashConst
+    Grin.Lint
+    Grin.Main
+    Grin.NodeAnalyze
+    Grin.Noodle
+    Grin.Optimize
+    Grin.Show
+    Grin.SSimplify
+    Grin.StorageAnalysis
+    Grin.Val
+    Grin.Whiz
+
+    C.FromGrin2
+    C.Generate
+
+  build-depends:
+    base,
+    mtl,
+    binary,
+    containers,
+    fgl,
+    bytestring,
+    directory,
+    utf8-string,
+    filepath,
+    pretty,
+    process,
+    jhc-compat,
+    jhc-common,
+    jhc-frontend,
+    jhc-core
+
+  hs-source-dirs:      src
+  default-language:    Haskell98
+
+  default-extensions:
+      BangPatterns, TypeFamilies, ViewPatterns, UndecidableInstances,
+      OverlappingInstances, RecordWildCards, RecursiveDo, TupleSections,
+      ParallelListComp, GeneralizedNewtypeDeriving, ScopedTypeVariables,
+      FlexibleInstances, TypeSynonymInstances, MultiParamTypeClasses,
+      DeriveDataTypeable, NoMonoLocalBinds, NamedFieldPuns,
+      ForeignFunctionInterface, UnliftedFFITypes, ImplicitParams,
+      UnboxedTuples, StandaloneDeriving, DeriveFunctor, DeriveFoldable,
+      DeriveTraversable, FlexibleContexts,
+      ConstrainedClassMethods, FunctionalDependencies, MagicHash,
+      PolymorphicComponents, ExistentialQuantification, UnicodeSyntax,
+      PostfixOperators, PatternGuards, LiberalTypeSynonyms, RankNTypes,
+      TypeOperators, EmptyDataDecls, KindSignatures, DeriveGeneric

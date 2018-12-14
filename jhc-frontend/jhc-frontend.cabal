@@ -1,0 +1,117 @@
+name:                jhc-frontend
+version:             0.1.0.0
+synopsis:            haskell frontend stripped out from jhc
+description:         Parses and typechecks haskell code.
+license:             BSD3
+license-file:        LICENSE
+author:              John Meacham
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    FrontEnd.Class
+    FrontEnd.DataConsAssump
+    FrontEnd.DeclsDepends
+    FrontEnd.DependAnalysis
+    FrontEnd.Desugar
+    FrontEnd.Diagnostic
+    FrontEnd.Exports
+    FrontEnd.HsErrors
+    FrontEnd.HsPretty
+    FrontEnd.HsSyn
+    FrontEnd.Infix
+    FrontEnd.KindInfer
+    FrontEnd.Lex.Fixity
+    FrontEnd.Lex.Layout
+    FrontEnd.Lex.Lexer
+    FrontEnd.Lex.Parse
+    FrontEnd.Lex.ParseMonad
+    FrontEnd.Lex.Parser
+    FrontEnd.Lex.Post
+    FrontEnd.Rename
+    FrontEnd.Representation
+    FrontEnd.SrcLoc
+    FrontEnd.Syn.Options
+    FrontEnd.Syn.Traverse
+    FrontEnd.Tc.Class
+    FrontEnd.Tc.Kind
+    FrontEnd.Tc.Main
+    FrontEnd.Tc.Monad
+    FrontEnd.Tc.Type
+    FrontEnd.Tc.Unify
+    FrontEnd.TypeSigs
+    FrontEnd.TypeSynonyms
+    FrontEnd.Unlit
+    FrontEnd.Warning
+
+    Util.ExitCodes
+    Util.Graphviz
+    Util.Once
+    Util.Perhaps
+    Util.Progress
+    Util.Relation
+    Util.UnionFind
+    Util.UnionSolve
+    Util.UniqueMonad
+    Util.VarName
+    Util.YAML
+
+    FlagDump
+    FlagOpts
+    Options
+
+    RawFiles
+
+    Support.Unparse
+    Support.IniParse
+    Support.TempDir
+    Support.Tickle
+
+    Version.Config
+    Version.Version
+
+    FindFixpoint
+
+    DerivingDrift.Drift
+    DerivingDrift.DataP
+    DerivingDrift.StandardRules
+    DerivingDrift.RuleUtils
+
+  default-extensions:
+      BangPatterns, TypeFamilies, ViewPatterns, UndecidableInstances,
+      OverlappingInstances, RecordWildCards, RecursiveDo, TupleSections,
+      ParallelListComp, GeneralizedNewtypeDeriving, ScopedTypeVariables,
+      FlexibleInstances, TypeSynonymInstances, MultiParamTypeClasses,
+      DeriveDataTypeable, NoMonoLocalBinds, NamedFieldPuns,
+      ForeignFunctionInterface, UnliftedFFITypes, ImplicitParams,
+      UnboxedTuples, StandaloneDeriving, DeriveFunctor, DeriveFoldable,
+      DeriveTraversable, FlexibleContexts,
+      ConstrainedClassMethods, FunctionalDependencies, MagicHash,
+      PolymorphicComponents, ExistentialQuantification, UnicodeSyntax,
+      PostfixOperators, PatternGuards, LiberalTypeSynonyms, RankNTypes,
+      TypeOperators, EmptyDataDecls, KindSignatures, DeriveGeneric
+
+  build-depends:
+    base,
+    mtl,
+    containers,
+    binary,
+    pretty,
+    array,
+    utf8-string,
+    bytestring,
+    fgl,
+    random,
+    old-time,
+    directory,
+    syb,
+    filepath,
+    unix,
+    jhc-compat,
+    jhc-common
+
+  hs-source-dirs:      src
+  build-tools:         alex, happy
+  default-language:    Haskell98

@@ -1,0 +1,14 @@
+resolver: lts-2.22
+
+packages:
+  - jhc-compat
+  - jhc-common
+  - jhc-frontend
+  - jhc-core
+  - jhc-grin
+  - jhc-app
+
+extra-deps:
+  - HsSyck-0.53
+
+

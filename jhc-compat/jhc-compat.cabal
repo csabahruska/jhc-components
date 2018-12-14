@@ -1,0 +1,41 @@
+name:                jhc-compat
+version:             0.1.0.0
+synopsis:            jhc's haskell98 library
+--description:
+license:             BSD3
+license-file:        LICENSE
+author:              John Meacham
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+
+library
+  exposed-modules:
+    Array
+    Char
+    Complex
+    CPUTime
+    Directory
+    IO
+    Ix
+    List
+    Locale
+    Maybe
+    Monad
+    Random
+    Ratio
+    System
+    Time
+
+  build-depends:
+    base,
+    array,
+    directory,
+    old-locale,
+    random,
+    process,
+    old-time
+
+  hs-source-dirs:      haskell98
+  default-language:    Haskell98

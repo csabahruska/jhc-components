@@ -1,0 +1,95 @@
+name:                jhc-core
+version:             0.1.0.0
+synopsis:            jhc core optimizer
+--description:
+license:             BSD3
+license-file:        LICENSE
+author:              John Meacham
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    E.Inline
+    E.Binary
+    E.E
+    E.FromHs
+    E.Annotate
+    E.PrimOpt
+    E.Eval
+    E.TypeAnalysis
+    E.Main
+    E.FreeVars
+    E.Values
+    E.Diff
+    E.PrimDecode
+    E.LambdaLift
+    E.LetFloat
+    E.Show
+    E.Subst
+    E.Rules
+    E.TypeCheck
+    E.WorkerWrapper
+    E.Eta
+    E.Traverse
+    E.Program
+    E.Lint
+    E.CPR
+    E.Demand
+    E.SSimplify
+    E.Type
+    --E.ToHs
+
+    FrontEnd.Tc.Module
+    FrontEnd.FrontEnd
+
+    Ho.Binary
+    Ho.Build
+    Ho.Collected
+    Ho.Library
+    Ho.ReadSource
+    Ho.Type
+
+    DataConstructors
+
+    Info.Binary
+
+    Cmm.OpEval
+
+    Util.FilterInput
+
+  build-depends:
+    base,
+    mtl,
+    binary,
+    containers,
+    pretty,
+    bytestring,
+    filepath,
+    directory,
+    process,
+    utf8-string,
+    unix,
+    zlib,
+    HsSyck,
+    jhc-compat,
+    jhc-common,
+    jhc-frontend
+
+  hs-source-dirs:      src
+  default-language:    Haskell98
+
+  default-extensions:
+      BangPatterns, TypeFamilies, ViewPatterns, UndecidableInstances,
+      OverlappingInstances, RecordWildCards, RecursiveDo, TupleSections,
+      ParallelListComp, GeneralizedNewtypeDeriving, ScopedTypeVariables,
+      FlexibleInstances, TypeSynonymInstances, MultiParamTypeClasses,
+      DeriveDataTypeable, NoMonoLocalBinds, NamedFieldPuns,
+      ForeignFunctionInterface, UnliftedFFITypes, ImplicitParams,
+      UnboxedTuples, StandaloneDeriving, DeriveFunctor, DeriveFoldable,
+      DeriveTraversable, FlexibleContexts,
+      ConstrainedClassMethods, FunctionalDependencies, MagicHash,
+      PolymorphicComponents, ExistentialQuantification, UnicodeSyntax,
+      PostfixOperators, PatternGuards, LiberalTypeSynonyms, RankNTypes,
+      TypeOperators, EmptyDataDecls, KindSignatures, DeriveGeneric

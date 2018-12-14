@@ -1,0 +1,118 @@
+name:                jhc-common
+version:             0.1.0.0
+synopsis:            jhc compiler foundation library
+--description:
+license:             BSD3
+license-file:        LICENSE
+author:              John Meacham
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+extra-source-files:
+  src/StringTable/StringTable_cbits.h
+  src/StringTable/StringTable_cbits.c
+  hs_src_config.h
+
+library
+  exposed-modules:
+    Cmm.Number
+    Cmm.Op
+
+    StringTable.Atom
+
+    Name.Binary
+    Name.Id
+    Name.Internals
+    Name.Name
+    Name.Names
+    Name.Prim
+    Name.VConsts
+
+    Info.Info
+    Info.Properties
+    Info.Types
+
+    C.FFI
+    C.Prims
+
+    Doc.Chars
+    Doc.DocLike
+    Doc.Pretty
+    Doc.PPrint
+
+    GenUtil
+
+    Util.BitSet
+    Util.ContextMonad
+    Util.Gen
+    Util.GMap
+    Util.Graph
+    Util.HasSize
+    Util.Inst
+    Util.IntBag
+    Util.NameMonad
+    Util.ReaderWriter
+    Util.RWS
+    Util.SameShape
+    Util.Seq
+    Util.SetLike
+    Util.Std
+
+    Ty.Level
+
+    Support.CanType
+    Support.CFF
+    Support.Compat
+    Support.FreeVars
+    Support.MapBinaryInstance
+    Support.MD5
+    Support.Transform
+    Support.Tuple
+
+    PackedString
+
+    Stats
+
+    Fixer.Fixer
+    Fixer.Supply
+    Fixer.VMap
+
+  build-depends:
+    base,
+    mtl,
+    binary,
+    containers,
+    pretty,
+    bytestring,
+    utf8-string,
+    random,
+    old-time,
+    directory,
+    syb,
+    array,
+    jhc-compat
+
+  hs-source-dirs:      src
+  default-language:    Haskell98
+
+  build-tools:         hsc2hs
+
+  include-dirs:        . src/StringTable cbits
+  c-sources:           src/StringTable/StringTable_cbits.c
+                       cbits/lookup3.c
+                       cbits/md5sum.c
+
+  default-extensions:
+      BangPatterns, TypeFamilies, ViewPatterns, UndecidableInstances,
+      OverlappingInstances, RecordWildCards, RecursiveDo, TupleSections,
+      ParallelListComp, GeneralizedNewtypeDeriving, ScopedTypeVariables,
+      FlexibleInstances, TypeSynonymInstances, MultiParamTypeClasses,
+      DeriveDataTypeable, NoMonoLocalBinds, NamedFieldPuns,
+      ForeignFunctionInterface, UnliftedFFITypes, ImplicitParams,
+      UnboxedTuples, StandaloneDeriving, DeriveFunctor, DeriveFoldable,
+      DeriveTraversable, FlexibleContexts,
+      ConstrainedClassMethods, FunctionalDependencies, MagicHash,
+      PolymorphicComponents, ExistentialQuantification, UnicodeSyntax,
+      PostfixOperators, PatternGuards, LiberalTypeSynonyms, RankNTypes,
+      TypeOperators, EmptyDataDecls, KindSignatures, DeriveGeneric
