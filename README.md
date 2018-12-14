@@ -24,7 +24,7 @@ stack build
 stack exec -- jhc -h
 ```
 
-To compiler the standard libraries:
+To compile the standard libraries run:
 ```
 stack exec -- jhc -L . --build-hl  lib/jhc-prim/jhc-prim.yaml
 stack exec -- jhc -L . --build-hl  lib/jhc/jhc.yaml
