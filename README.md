@@ -1,7 +1,7 @@
 # JHC Haskell Compiler
 
 This is a fork of [JHC Haskell Compiler](http://repetae.net/computer/jhc/).
-The source code is split into reusable components and build with [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).
+The source code is split into reusable components and builds with [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).
 
 ### System Requirements
 - OS: Windows/Linux/OSX
