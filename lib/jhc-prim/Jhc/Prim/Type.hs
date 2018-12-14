@@ -1,0 +1,2 @@
+
+data Proxy a :: # = Proxy

@@ -1,0 +1,62 @@
+Name: jhc
+Version: 1.0
+Extensions: [ ForeignFunctionInterface, NoImplicitPrelude, UnboxedTuples, UnboxedValues ]
+Hs-Source-Dir: .
+Options: [ --noauto, -pjhc-prim ]
+Hidden-Modules:
+        - Jhc.Int
+        - Jhc.Inst.Enum
+        - Jhc.Inst.PrimEnum
+        - Jhc.Inst.Show
+        - Jhc.Inst.Storable
+Exposed-Modules:
+        - Data.Ratio
+        - Data.String
+        - Foreign.C.Error
+        - Foreign.C.String
+        - Foreign.C.Types
+        - Foreign.Marshal.Alloc
+        - Foreign.Marshal.Array
+        - Foreign.Marshal.Utils
+        - Foreign.Ptr
+        - Foreign.Storable
+        - Jhc.Addr
+        - Jhc.Basics
+        - Jhc.Class.Num
+        - Jhc.Class.Ord
+        - Jhc.Class.Real
+        - Jhc.Enum
+        - Jhc.Float
+        - Jhc.ForeignPtr
+        - Jhc.Handle
+        - Jhc.IO
+        - Jhc.Inst.Read
+        - Jhc.List
+        - Jhc.Maybe
+        - Jhc.Monad
+        - Jhc.Num
+        - Jhc.Numeric
+        - Jhc.Options
+        - Jhc.Order
+        - Jhc.Prim
+        - Jhc.Show
+        - Jhc.String
+        - Jhc.Text.Read
+        - Jhc.Tuples
+        - Jhc.Type.Basic
+        - Jhc.Type.C
+        - Jhc.Type.Float
+        - Jhc.Type.Handle
+        - Jhc.Type.Ptr
+        - Jhc.Type.Word
+        - Numeric
+        - Prelude.CType
+        - Prelude.Float
+        - Prelude.IO
+        - Prelude.Text
+        - System.C.Stdio
+        - System.IO.Unsafe
+        - System.Mem
+        - System.Mem.StableName
+#        - Jhc.Hole
+#        - Jhc.JumpPoint
