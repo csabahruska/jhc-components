@@ -14,7 +14,7 @@ The source code is split into reusable components and builds with [Haskell Stack
 
 NOTE: *lib* contains the standard Haskell libraries for JHC
 
-### System Requirements
+#### System Requirements
 - OS: Windows/Linux/OSX
 
 #### Compile & Run
