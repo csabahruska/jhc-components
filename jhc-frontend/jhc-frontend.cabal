@@ -76,15 +76,7 @@ library
     binary,
     pretty,
     array,
-    utf8-string,
-    bytestring,
-    fgl,
-    random,
-    old-time,
-    directory,
     syb,
-    filepath,
-    unix,
     jhc-compat,
     jhc-common
 

@@ -109,8 +109,6 @@ library
     pretty,
     bytestring,
     utf8-string,
-    random,
-    old-time,
     directory,
     syb,
     array,
