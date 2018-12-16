@@ -58,6 +58,8 @@ library
     Util.Seq
     Util.SetLike
     Util.Std
+    Util.YAML
+    Util.ExitCodes
 
     Ty.Level
 
@@ -65,14 +67,27 @@ library
     Support.CFF
     Support.Compat
     Support.FreeVars
+    Support.IniParse
     Support.MapBinaryInstance
     Support.MD5
+    Support.TempDir
+    Support.Tickle
     Support.Transform
     Support.Tuple
+    Support.Unparse
 
     PackedString
 
+    Options
+    RawFiles
+
     Stats
+
+    FlagDump
+    FlagOpts
+
+    Version.Config
+    Version.Version
 
     Fixer.Fixer
     Fixer.Supply
@@ -91,6 +106,9 @@ library
     directory,
     syb,
     array,
+    unix,
+    filepath,
+    file-embed,
     jhc-compat
 
   hs-source-dirs:      src

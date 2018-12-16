@@ -1,0 +1,98 @@
+Tue Feb  7 03:53:23 PST 2012  John Meacham <john@repetae.net>
+  * clean up handling of raw files, keep source file separate when compiling. include useful header files when compiling.
+
+Tue Feb  7 02:55:10 PST 2012  John Meacham <john@repetae.net>
+  * make foreign imports work with unboxed IO types, improve primitive operators.
+
+Mon Feb  6 22:32:02 PST 2012  John Meacham <john@repetae.net>
+  * add support for 'Coerce' grin primitive, add atomic allocs in grin.
+
+Mon Feb  6 17:57:19 PST 2012  John Meacham <john@repetae.net>
+  * add Jhc.Prim.Rts to access properties of the RTS
+
+Mon Feb  6 10:11:22 PST 2012  John Meacham <john@repetae.net>
+  * clean up foreignptr implementation some.
+
+Mon Feb  6 07:30:22 PST 2012  John Meacham <john@repetae.net>
+  * allow extra C code to be bundled within .hl files, include bytestring in the standard external libraries.
+
+Mon Feb  6 06:03:18 PST 2012  John Meacham <john@repetae.net>
+  * pass -D flags to hsc2hs, add CLong and CULong instances, fill out Foreign.ForeignPtr
+
+Mon Feb  6 04:24:44 PST 2012  John Meacham <john@repetae.net>
+  * remove old references to the haskell object directory, made everything cache based. added --purge-cache
+
+Mon Feb  6 03:22:32 PST 2012  John Meacham <john@repetae.net>
+  * update documentation, move Data.Char to base
+
+Mon Feb  6 01:52:09 PST 2012  John Meacham <john@repetae.net>
+  * remove redundant dependencies from 'base'
+
+Mon Feb  6 01:27:30 PST 2012  John Meacham <john@repetae.net>
+  * include location of 'import' declaration for unknown imports, move Data.Int and Data.Word out of jhc
+
+Mon Feb  6 00:13:57 PST 2012  John Meacham <john@repetae.net>
+  * move arrays to jhc-prim, remove special IORef specific primitives in favor of length 1 arrays
+
+Sun Feb  5 22:56:36 PST 2012  John Meacham <john@repetae.net>
+  * remove a lot of unneeded dependencies.
+
+Sun Feb  5 22:13:14 PST 2012  John Meacham <john@repetae.net>
+  * create Jhc.Class.Real to hold more advance numeric classes.
+
+Sun Feb  5 22:13:04 PST 2012  John Meacham <john@repetae.net>
+  * add script to check for and remove unneeded imports from libraries, remove a bunch from lib/jhc/
+
+Sun Feb  5 22:11:51 PST 2012  John Meacham <john@repetae.net>
+  * don't require 'error' to be in scope for where pattern desugaring, process renaming errors before kind inference
+
+Sun Feb  5 18:28:10 PST 2012  John Meacham <john@repetae.net>
+  * seperate --stop parameter from compilation mode
+
+Sun Feb  5 16:57:46 PST 2012  John Meacham <john@repetae.net>
+  * use quoteName mechanism to pre-rename certain names, fix class instance namespace bug
+
+Sun Feb  5 03:08:57 PST 2012  John Meacham <john@repetae.net>
+  * generate reverse name map during renaming
+
+Sun Feb  5 00:21:56 PST 2012  John Meacham <john@repetae.net>
+  * fix up library to pass the more strigent typechecking
+
+Sat Feb  4 18:58:15 PST 2012  John Meacham <john@repetae.net>
+  * check superclass constraints on instance declarations
+
+Sat Feb  4 17:56:51 PST 2012  John Meacham <john@repetae.net>
+  * properly check for duplicate instances
+
+Sat Feb  4 16:30:34 PST 2012  John Meacham <john@repetae.net>
+  * add ghc typecheck failure tests
+
+Sat Feb  4 16:02:03 PST 2012  John Meacham <john@repetae.net>
+  * improve kind checking, kind check instance heads before typechecking pass, switch HsInstDecl to use the HsClassHead
+
+Sat Feb  4 14:07:32 PST 2012  John Meacham <john@repetae.net>
+  * switch kind inference to use the unified warnings mechanism, switch class declarations to use a HsClassHead 
+
+Thu Feb  2 20:17:57 PST 2012  John Meacham <john@repetae.net>
+  * turn WarnType into a real algebraic data type.
+
+Wed Feb  1 05:20:53 PST 2012  John Meacham <john@repetae.net>
+  * code cleanups, used located in hstype, use packedstring for filename.
+
+Wed Feb  1 03:02:17 PST 2012  John Meacham <john@repetae.net>
+  * add bange-patterns extension, add individual flags for various extensions
+
+Tue Jan 31 23:34:00 PST 2012  John Meacham <john@repetae.net>
+  * Rework the internal class representation to separate instances from class declarations
+
+Tue Jan 31 17:59:18 PST 2012  John Meacham <john@repetae.net>
+  * add DeNameable class to un-rename source before printing error messages.
+
+Tue Jan 31 13:49:51 PST 2012  John Meacham <john@repetae.net>
+  * make IO a newtype of ST
+
+Mon Jan 30 03:22:30 PST 2012  John Meacham <john@repetae.net>
+  * speed up parsing/lexing by using Name's rather than Strings
+
+Mon Jan 30 01:56:03 PST 2012  John Meacham <john@repetae.net>
+  tagged mydniquipepo

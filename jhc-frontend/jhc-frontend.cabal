@@ -46,7 +46,6 @@ library
     FrontEnd.Unlit
     FrontEnd.Warning
 
-    Util.ExitCodes
     Util.Graphviz
     Util.Once
     Util.Perhaps
@@ -56,21 +55,7 @@ library
     Util.UnionSolve
     Util.UniqueMonad
     Util.VarName
-    Util.YAML
 
-    FlagDump
-    FlagOpts
-    Options
-
-    RawFiles
-
-    Support.Unparse
-    Support.IniParse
-    Support.TempDir
-    Support.Tickle
-
-    Version.Config
-    Version.Version
 
     FindFixpoint
 
