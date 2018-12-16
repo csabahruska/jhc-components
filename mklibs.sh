@@ -1,7 +1,7 @@
 reset
 set -x
 
-rm -fr /home/csaba/.jhc
+rm -fr $HOME/.jhc/cache
 
 rm *.hl
 
