@@ -46,16 +46,7 @@ library
     FrontEnd.Unlit
     FrontEnd.Warning
 
-    Util.Graphviz
-    Util.Once
-    Util.Perhaps
-    Util.Progress
     Util.Relation
-    Util.UnionFind
-    Util.UnionSolve
-    Util.UniqueMonad
-    Util.VarName
-
 
     FindFixpoint
 

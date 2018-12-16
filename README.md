@@ -38,3 +38,9 @@ stack exec -- jhc -L . --build-hl  lib/applicative/applicative.yaml
 stack exec -- jhc -L . --build-hl  lib/flat-foreign/flat-foreign.yaml
 ```
 
+To compile the examples run:
+```
+stack exec -- jhc -L . examples/Calendar.hs -o calendar
+stack exec -- jhc -L . examples/HelloWorld.hs -o hello
+stack exec -- jhc -L . examples/Primes.hs -o primes
+```

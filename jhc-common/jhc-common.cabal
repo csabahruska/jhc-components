@@ -45,21 +45,29 @@ library
 
     Util.BitSet
     Util.ContextMonad
+    Util.ExitCodes
     Util.Gen
     Util.GMap
     Util.Graph
+    Util.Graphviz
     Util.HasSize
     Util.Inst
     Util.IntBag
     Util.NameMonad
+    Util.Once
+    Util.Perhaps
+    Util.Progress
     Util.ReaderWriter
     Util.RWS
     Util.SameShape
     Util.Seq
     Util.SetLike
     Util.Std
+    Util.UnionFind
+    Util.UnionSolve
+    Util.UniqueMonad
+    Util.VarName
     Util.YAML
-    Util.ExitCodes
 
     Ty.Level
 
@@ -108,6 +116,7 @@ library
     array,
     unix,
     filepath,
+    fgl,
     file-embed,
     jhc-compat
 

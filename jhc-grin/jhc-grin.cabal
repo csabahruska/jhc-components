@@ -45,7 +45,6 @@ library
     process,
     jhc-compat,
     jhc-common,
-    jhc-frontend,
     jhc-core
 
   hs-source-dirs:      src
