@@ -19,20 +19,21 @@ executable jhc
     Util.Interact
 
   build-depends:
-    base,
-    directory,
-    filepath,
-    bytestring,
-    mtl,
-    containers,
-    pretty,
-    process,
-    regex-compat,
-    jhc-compat,
-    jhc-common,
-    jhc-frontend,
-    jhc-core,
-    jhc-grin
+    base         == 4.7.*,
+    directory    >= 1.2.1 && <1.3,
+    filepath     >= 1.3.0.2 && <1.4,
+    bytestring   >= 0.10.4 && <0.11,
+    mtl          >= 2.1.3 && <2.2,
+    containers   >= 0.5.5 && <0.6,
+    pretty       >= 1.1.1 && <1.2,
+    process      == 1.2.*,
+    regex-compat >= 0.95.1 && <0.96,
+
+    jhc-compat   == 0.1.0.*,
+    jhc-common   == 0.1.0.*,
+    jhc-frontend == 0.1.0.*,
+    jhc-core     == 0.1.0.*,
+    jhc-grin     == 0.1.0.*
 
   include-dirs: .
 
