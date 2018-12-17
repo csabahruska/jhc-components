@@ -4,7 +4,7 @@ This is a fork of [JHC Haskell Compiler](http://repetae.net/computer/jhc/) 0.8.2
 
 The source code is split into reusable components and builds with [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).
 
-#### Components
+### Components
 - `jhc-compat`: Haskell98 compatibility library
 - `jhc-common`: Compiler foundation library
 - `jhc-frontend`: Haskell Front-End, lexer, parser, type-checker
@@ -14,12 +14,12 @@ The source code is split into reusable components and builds with [Haskell Stack
 
 NOTE: *lib* contains the standard Haskell libraries for JHC
 
-#### System Requirements
+### System Requirements
 - OS: Windows/Linux/OSX
 
-#### Compile & Run
+### Compile & Run
 
-##### Cabal
+#### Cabal
 The instructions below are for [Haskell Cabal](https://www.haskell.org/cabal/) version 2.4.1 or later.
 
 To (re)compile and run `jhc` from within the source-tree, simply invoke
@@ -45,7 +45,7 @@ cabal v2-run jhc -- -L . examples/HelloWorld.hs -o hello
 cabal v2-run jhc -- -L . examples/Primes.hs -o primes
 ```
 
-##### Stack
+#### Stack
 The instructions below are for [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).
 
 ```
