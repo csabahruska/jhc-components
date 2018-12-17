@@ -72,3 +72,7 @@ cabal v2-run jhc -- -L . examples/Calendar.hs -o calendar
 cabal v2-run jhc -- -L . examples/HelloWorld.hs -o hello
 cabal v2-run jhc -- -L . examples/Primes.hs -o primes
 ```
+
+### Development Ideas
+
+Check the list of development [ideas](Ideas.md).
